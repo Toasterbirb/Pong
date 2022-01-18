@@ -165,7 +165,7 @@ int main(int argc, char **argv)
 		break;
 	}
 
-	Birb::Window window("Pong", Birb::Vector2int(1280, 720), 240);
+	Birb::Window window("Pong", Birb::Vector2int(1280, 720), 240, true);
 	Birb::TimeStep timeStep;
 
 	/* Initialize timestep */

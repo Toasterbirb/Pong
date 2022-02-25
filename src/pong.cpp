@@ -165,11 +165,11 @@ int main(int argc, char **argv)
 		break;
 	}
 
-	Birb::Window window("Pong", Birb::Vector2int(1280, 720), 240, true);
+	Birb::Window window("Pong", Birb::Vector2int(1280, 720), 60, true);
 	Birb::TimeStep timeStep;
 
 	/* Initialize timestep */
-	timeStep.Init();
+	timeStep.Init(&window);
 
 	/* Gameloop variables */
 	SDL_Event event;
@@ -195,8 +195,8 @@ int main(int argc, char **argv)
 	/* Score variables */
 	int playerScore = 0;
 	int botScore = 0;
-	Birb::Entity e_playerScore("Player score", Birb::Vector2int(window.window_dimensions.x / 2 - 150, 32), Birb::TextComponent("0", scoreFont, &Birb::Colors::White));
-	Birb::Entity e_botScore("Bot score", Birb::Vector2int(window.window_dimensions.x / 2 + 150 - 64, 32), Birb::TextComponent("0", scoreFont, &Birb::Colors::White));
+	Birb::Entity e_playerScore("Player score", Birb::Vector2int(window.window_dimensions.x / 2 - 150, 32), Birb::EntityComponent::Text("0", scoreFont, &Birb::Colors::White));
+	Birb::Entity e_botScore("Bot score", Birb::Vector2int(window.window_dimensions.x / 2 + 150 - 64, 32), Birb::EntityComponent::Text("0", scoreFont, &Birb::Colors::White));
 
 	/* Sounds */
 	Birb::Audio::Init(MIX_INIT_MP3);
